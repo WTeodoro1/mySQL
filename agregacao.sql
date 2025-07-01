@@ -1,0 +1,16 @@
+use Restaurante;
+select *from funcionarios;
+select *from pedidos;
+select *from clientes;
+select * from produtos;
+select * from info_produtos;
+select count(id_pedido) from pedidos;
+select count(distinct id_cliente) from pedidos;
+select avg(preco) from produtos;
+select min(preco) from produtos;
+select max(preco) from produtos;
+select nome, preco, row_number() over (order by preco desc) as Ranking_preco from produtos limit 5;
+select categoria, round(avg(preco),2) as media_preco from produtos group by categoria;
+select fornecedor, count(*) as quantidade_produtos from info_produtos group by fornecedor;
+select fornecedor, count(*) as quantidade_produtos from info_produtos group by fornecedor having count(*)>1;
+select id_cliente, count(*) as id_pedido from pedidos group by id_cliente having count(*)=1;
